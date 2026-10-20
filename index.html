@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman M. Morsy - Interactive Card</title>
+    <!-- Modern Professional Sans-Serif Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --brand-gold: #ffbe00;
+            --chrome-light: #e0e0e0;
+            --chrome-mid: #a6afb8;
+            --chrome-dark: #707780;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Card Container with Backdrop Texture Inspired by the Banner Design */
+        .card-container {
+            background: linear-gradient(rgba(20, 24, 30, 0.85), rgba(13, 15, 18, 0.95)), 
+                        url('https://images.unsplash.com/photo-1533158326339-7f3cf2404354?auto=format&fit=crop&w=600&q=80'); /* High-fidelity asphalt texture mapping */
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Sharp high-contrast white divider accents inspired by the print layout */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 15px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+        }
+        
+        .card-container::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; right: 15px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+        }
+
+        /* Branding Corporate Logo Component */
+        .branding-header {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-graphic {
+            width: 70px;
+            height: auto;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 10px rgba(255, 190, 0, 0.4));
+        }
+
+        .logo-text {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+        
+        .logo-text span {
+            color: var(--brand-gold);
+        }
+
+        /* Premium Square Chrome Profile Frame */
+        .profile-frame {
+            width: 210px;
+            height: 210px;
+            margin: 0 auto 35px auto;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, var(--chrome-light), var(--chrome-dark), var(--chrome-mid));
+            padding: 3px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #1a1a1a;
+            display: block;
+        }
+
+        /* Identity Block Layout */
+        .identity-block {
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .full-name {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, var(--chrome-mid) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .corporate-title {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--chrome-dark);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        /* Facebook Slogan Tagline Integration */
+        .corporate-slogan {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: var(--brand-gold);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            opacity: 0.9;
+        }
+
+        .comms-data {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--chrome-mid);
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        .comms-link {
+            color: var(--chrome-mid);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .comms-link:hover {
+            color: #ffffff;
+        }
+
+        /* Minimalist Action Navigation Bar Area */
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .action-icon-btn {
+            flex: 1;
+            height: 50px;
+            background: linear-gradient(145deg, #1d222a, #11151a);
+            border: 1px solid rgba(166, 175, 184, 0.15);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+        }
+
+        .action-icon-btn:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .svg-icon {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--chrome-mid);
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.3s ease;
+        }
+
+        .action-icon-btn:hover .svg-icon {
+            stroke: #ffffff;
+        }
+
+        .action-icon-btn:hover .whatsapp-color { stroke: #25D366; }
+        .action-icon-btn:hover .facebook-color { stroke: #1877F2; }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <!-- Branding Identity Header -->
+        <div class="branding-header">
+            <svg class="logo-graphic" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M35,25 H55 V55 H35 Z" fill="var(--brand-gold)" />
+                <path d="M45,40 H65 V70 H45 Z" fill="var(--brand-gold)" opacity="0.9"/>
+            </svg>
+            <div class="logo-text">The <span>Design</span> Studio</div>
+        </div>
+
+        <!-- Refined Profile Frame Component -->
+        <div class="profile-frame">
+            <!-- Replace 'image_hpN5L2.png' with your preferred image upload path in GitHub -->
+            <img class="profile-image" src="image_hpN5L2.png" alt="Abdelrahman M. Morsy Profile View">
+        </div>
+
+        <!-- Identity and Slogan Section -->
+        <div class="identity-block">
+            <h1 class="full-name">Abdelrahman M. Morsy</h1>
+            <div class="corporate-title">Co-Founder</div>
+            <div class="corporate-slogan">Your Vision, Our Voice</div>
+            
+            <div class="comms-data">
+                <p><a href="tel:01149970007" class="comms-link">01149970007</a> / <a href="tel:01555139696" class="comms-link">01555139696</a></p>
+                <p><a href="mailto:thdesignstudio2025@gmail.com" class="comms-link">thdesignstudio2025@gmail.com</a></p>
+            </div>
+        </div>
+
+        <!-- Icon Control Action Row Tray -->
+        <div class="actions-row">
+            
+            <!-- WhatsApp Connection -->
+            <a href="https://wa.me/201149970007" target="_blank" class="action-icon-btn" title="Contact on WhatsApp">
+                <svg class="svg-icon whatsapp-color" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+            </a>
+
+            <!-- Facebook Integration -->
+            <a href="https://www.facebook.com/profile.php?id=61579805030478" target="_blank" class="action-icon-btn" title="Visit Facebook Profile">
+                <svg class="svg-icon facebook-color" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </a>
+
+            <!-- Interactive VCard Download Function -->
+            <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3AMorsy%3BAbdelrahman%3B%3B%3B%0AFN%3AAbdelrahman%20M.%20Morsy%0AORG%3AThe%20Design%20Studio%0ATITLE%3ACo-Founder%0ATEL%3BTYPE%3DCELL%3A01149970007%0ATEL%3BTYPE%3DCELL%3A01555139696%0AEMAIL%3BTYPE%3DPREF%2CINTERNET%3Athdesignstudio2025%40gmail.com%0AEND%3AVCARD" download="Abdelrahman_Morsy.vcf" class="action-icon-btn" title="Download Contact Card">
+                <svg class="svg-icon" viewBox="0 0 24 24">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="8.5" cy="7" r="4"/>
+                    <line x1="20" y1="8" x2="20" y2="14"/>
+                    <line x1="23" y1="11" x2="17" y2="11"/>
+                </svg>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
